@@ -1,14 +1,37 @@
 <hmtl>
-  <head>
-    <title>Pathfinding Visualizer</title>
-  </head>
-  <body>
-    <table>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-     </tr>
-     <tr>this is hwere the stuff goes</td>
-  </body>
+	<head>
+		<title>Pathfinding Visualizer</title>
+		
+	</head>
+	<body>
+		<div style="background-color: lightblue;">
+			<form>
+				<table style="width:1600px;">
+					<tr>
+						<td style="text-align:center">Tool Selector</td>
+						<td style="text-align:center">Enable cost values</td>
+						<td style="text-align:center">Enable parent arrows</td>
+						
+						<td style="text-align:center">Choose an Algorithm</td>
+					</tr>
+					<tr>
+						<td style="text-align:center"><button id="myButton1" type="button" style="width:100px; height:50px;" action="change_button()">Wall</button></td>
+						<script src="javascript.js"></script>
+						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;"></td>
+						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;"></td>
+						
+						<td style="text-align:center"><select id="algorithm" name="algorithm" style="width:100px; height:50px;">
+						  <option value="astar">A*</option>
+						  <option value="dijkstra">Dijkstra</option>
+						  <option value="andrew">andrew</option>
+						</select></td>
+						
+						<td style="text-align:center"><button type="button" style="width:100px; height:50px;">Run</button></td>
+						<td style="text-align:center"><button type="button" style="width:100px; height:50px;">Step</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+	
 </html>
