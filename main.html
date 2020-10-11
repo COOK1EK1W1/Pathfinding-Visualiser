@@ -4,9 +4,9 @@
 		<script src="javascript.js"></script>
 	</head>
 	<body style="margin:0px;">
-		<div style="background-color: lightblue; height:100px;">
+		<div style="background-color: lightblue; height:100px; width:1580;">
 			<form>
-				<table style="width:1500px;">
+				<table style="width:1580px;">
 					<tr>
 						<td style="text-align:center">Tool Selector</td>
 						<td style="text-align:center">Enable cost values</td>
@@ -28,11 +28,12 @@
 						
 						<td style="text-align:center"><button type="button" style="width:100px; height:50px;">Run</button></td>
 						<td style="text-align:center"><button type="button" style="width:100px; height:50px;">Step</button></td>
+						<td style="text-align:center"><button type="button" style="width:100px; height:50px;">Clear</button></td>
 					</tr>
 				</table>
 			</form>
 		</div>
-		<canvas id="grid" width="1580" height="680" style="border:1px solid #000000;" onmousemove="clickcanvas(event)" onmousedown="setmousedown()" onclick="setmouseup()"></canvas>
+		<canvas id="grid" width="1580" height="680" onmousemove="clickcanvas(event)" onmousedown="setmousedown()" onclick="setmouseup()"></canvas>
 		<script src="javascript2.js"></script>
 	</body>
 </html>
