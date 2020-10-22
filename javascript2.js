@@ -19,7 +19,6 @@ var closed_nodes = [];
 var nodes = [];
 
 var algo_loop; //setup varialbes for the loops
-var draw_loop;
 
 class Node{ 
 	//G cost = distance from starting node
@@ -116,7 +115,7 @@ function redraw(){
 setup();
 
 
-	/*##############################A* Algotrithm##################################*/
+/*##############################A* Algotrithm##################################*/
 
 function start_loop(){
 	algo_loop = setInterval(step, 0);}
