@@ -19,7 +19,7 @@
 						<td style="text-align:center"><button id="tool" type="button" style="width:100px; height:50px;" onclick="change_tool()" value="wall">Wall</button></td>
 
 						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;"></td>
-						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;"></td>
+						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;" id="parent_arrow_checkbox" onclick="redraw()"></td>
 						
 						<td style="text-align:center"><select id="algorithm" name="algorithm" style="width:100px; height:50px;">
 						  <option value="astar">A*</option>
@@ -34,7 +34,7 @@
 				</table>
 			</form>
 		</div>
-		<canvas id="grid" width="1580" height="680" onmousemove="clickcanvas(event)" onmousedown="setmousedown()" onclick="setmouseup()"></canvas>
+		<canvas id="grid" width="1580" height="680" onmousemove="mouse_move(event)" onmousedown="setmousedown(event)" onclick="setmouseup()"></canvas>
 		<script src="javascript2.js"></script>
 	</body>
 </html>
