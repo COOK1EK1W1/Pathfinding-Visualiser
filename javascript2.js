@@ -3,6 +3,8 @@ const tool = document.getElementById("tool");
 const parent_arrow_checkbox = document.getElementById("parent_arrow_checkbox");
 const algorithm = document.getElementById("algorithm");
 const play_pause_button = document.getElementById("play_pause");
+var andrew = new Image();
+andrew.src = "andrew.jpg";
 const ctx = c.getContext("2d");
 
 const zoom = 20; //setup constants
@@ -111,6 +113,7 @@ function setup(){
 	}
 	start_coords = [-1, -1]; //reset the start and end coords
 	end_coords = [-1, -1];
+	
 }
 
 function redraw(){
@@ -192,6 +195,7 @@ function step(){
 
 	if (algorithm.value == "A_Star"){A_Star();}
 	if (algorithm.value == "dijkstra"){dijkstra();}
+	if (algorithm.value == "andrew"){andrewa();}
 }
 /*##################################A* Algotrithm######################################*/
 function A_Star(){
@@ -303,16 +307,30 @@ function dijkstra(){
 			if (newdist < neighbour_node.G_cost){
 				if (neighbour_node.G_cost == Infinity){
 					open_nodes.push(neighbour_node);
-					neighbour_node.update_square("open");
+					neighbour_node.type= "open";
 				}
 				neighbour_node.G_cost = newdist;
 				neighbour_node.parent = Current;
+				neighbour_node.update_square("same");
 			}
 		}
 	}
 }
 /*##############################Dijkstra's Algotrithm##################################*/
+var x = 3;
+var y = 3;
+var xv = 3;
+var yv = 3;
+function andrewa(){
+	x += xv
+	if (x > width - 200){xv = -3;}
+	if (x < 0){xv = 3;}
+	if (y > height - 150){yv = -3;}
+	if (y < 0){yv = 3;}
 
+	y += yv
+	ctx.drawImage(andrew, x, y, 200, 150);
+}
 
 var mouseup = true;
 function setmousedown(event){mouseup = false; mouse_draw(event);}	//check if mouse is down
