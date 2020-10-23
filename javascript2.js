@@ -3,14 +3,21 @@ const tool = document.getElementById("tool");
 const parent_arrow_checkbox = document.getElementById("parent_arrow_checkbox");
 const algorithm = document.getElementById("algorithm");
 const play_pause_button = document.getElementById("play_pause");
+const nav_div = document.getElementById("nav");
 var andrew = new Image();
 andrew.src = "andrew.jpg";
 const ctx = c.getContext("2d");
 
+//nav_dir.width = screen.width;
+
 const zoom = 20; //setup constants
-const height = 680;
-const width = 1580;
+const height = Math.round((window.innerHeight - 120) / zoom) * zoom;
+const width = Math.round(window.innerWidth / zoom) * zoom;
+ctx.canvas.width = width;
+ctx.canvas.height = height;
 const neighbours = [[-1, 1], [ 0, 1], [ 1, 1], [ 1, 0], [ 1,-1], [0,-1], [-1,-1], [-1, 0]];
+
+
 
 const colours = {"empty" : "white" , "wall" : "black", "start" : "blue", "end" : "red",
 				"closed" : "orange", "path" : "green", "open"  : "pink"} //define colours
@@ -317,16 +324,16 @@ function dijkstra(){
 	}
 }
 /*##############################Dijkstra's Algotrithm##################################*/
-var x = 3;
-var y = 3;
-var xv = 3;
-var yv = 3;
+var x = 1;
+var y = 1;
+var xv = 1;
+var yv = 1;
 function andrewa(){
 	x += xv
-	if (x > width - 200){xv = -3;}
-	if (x < 0){xv = 3;}
-	if (y > height - 150){yv = -3;}
-	if (y < 0){yv = 3;}
+	if (x > width - 200){xv = -1;}
+	if (x < 0){xv = 1;}
+	if (y > height - 150){yv = -1;}
+	if (y < 0){yv = 1;}
 
 	y += yv
 	ctx.drawImage(andrew, x, y, 200, 150);

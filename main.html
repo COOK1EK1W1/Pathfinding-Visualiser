@@ -5,9 +5,9 @@
 		
 	</head>
 	<body style="margin:0px;">
-		<div style="background-color: lightblue; height:100px; width:1580;">
+		<div id="nav" style="background-color: lightblue; height:100px; width:100%;">
 			<form>
-				<table style="width:1580px;">
+				<table style="width:100%;">
 					<tr>
 						<td style="text-align:center">Tool Selector</td>
 						<td style="text-align:center">Enable parent arrows</td>
@@ -34,7 +34,7 @@
 				</table>
 			</form>
 		</div>
-		<canvas id="grid" width="1580" height="680" onmousemove="mouse_move(event)" onmousedown="setmousedown(event)" onclick="setmouseup()"></canvas>
+		<canvas id="grid" onmousemove="mouse_move(event)" style="width:100%;position:apsolute;" onmousedown="setmousedown(event)" onclick="setmouseup()"></canvas>
 		<script src="javascript2.js"></script>
 	</body>
 </html>
