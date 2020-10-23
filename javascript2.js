@@ -11,7 +11,7 @@ const ctx = c.getContext("2d");
 //nav_dir.width = screen.width;
 
 const zoom = 20; //setup constants
-const height = Math.round((window.innerHeight - 120) / zoom) * zoom;
+const height = Math.round((window.innerHeight - 100 - zoom) / zoom) * zoom;
 const width = Math.round(window.innerWidth / zoom) * zoom;
 ctx.canvas.width = width;
 ctx.canvas.height = height;
@@ -51,7 +51,7 @@ class Node{
 		this.H_cost = 0
 	}
 
-	init(){
+	calc_heuristics(){
 		if (this.parent == null){this.G_cost = 0;}else{ //G cost calculation
 			var horiz = Math.abs(this.parent.x - this.x);
 			var vert = Math.abs(this.parent.y - this.y);
@@ -199,11 +199,11 @@ function is_traversable(x1, y1, x2, y2){
 
 
 function step(){
-
 	if (algorithm.value == "A_Star"){A_Star();}
 	if (algorithm.value == "dijkstra"){dijkstra();}
 	if (algorithm.value == "andrew"){andrewa();}
 }
+
 /*##################################A* Algotrithm######################################*/
 function A_Star(){
 	if (algo_started == false){
@@ -247,7 +247,7 @@ function A_Star(){
 				var testing_node = nodes[neighbourcoords[1]][neighbourcoords[0]];
 				if (testing_node.type != "open"){
 					testing_node.parent = Current;
-					testing_node.init();
+					testing_node.calc_heuristics();
 					open_nodes.push(testing_node);
 					testing_node.update_square("open");
 					
@@ -346,8 +346,8 @@ function mouse_move(event){mouse_draw(event);}						//check if mouse has moved
 
 function mouse_draw(event){
 	if (!mouseup){
-		var actual_mouseX = event.clientX - 9; //local coordinated of the canvas
-		var actual_mouseY = event.clientY - 110;
+		var actual_mouseX = event.clientX - zoom / 2; //local coordinated of the canvas
+		var actual_mouseY = event.clientY - 100 - zoom / 2;
 
 		var gridx = Math.round(actual_mouseX / zoom); //local coordinates of the scaled grid
 		var gridy = Math.round(actual_mouseY / zoom);
