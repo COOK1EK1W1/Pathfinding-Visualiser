@@ -3,4 +3,3 @@ cAPTIALS
 
 alert path not showing before alert box
 cost tick box??
-pause button

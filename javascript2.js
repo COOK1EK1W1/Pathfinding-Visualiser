@@ -2,6 +2,7 @@ const c = document.getElementById("grid"); //get elements
 const tool = document.getElementById("tool");
 const parent_arrow_checkbox = document.getElementById("parent_arrow_checkbox");
 const algorithm = document.getElementById("algorithm");
+const play_pause_button = document.getElementById("play_pause");
 const ctx = c.getContext("2d");
 
 const zoom = 20; //setup constants
@@ -21,7 +22,10 @@ var nodes = [];
 
 var algo_loop; //setup varialbes for the loops
 
+var play = true;
+
 var algo_started = false;
+var algo_finished = false;
 
 class Node{ 
 	//G cost = distance from starting node
@@ -89,6 +93,9 @@ class Node{
 function setup(){
 	nodes = []
 	clearInterval(algo_loop);
+	play = true;
+	play_pause_button.innerHTML = "Run";
+
 	for (var y = 0; y < height / zoom; y++){//set up the 2d array of nodes 
 		var node_row = [];
 		for (var x = 0; x < width / zoom; x++){
@@ -98,6 +105,7 @@ function setup(){
 	}
 	for (var y = 0; y < height / zoom; y++){ //update all the nodes
 		for (var x = 0; x < width / zoom; x++){
+			nodes[y][x].parent = null;
 			nodes[y][x].update_square("empty");
 		}
 	}
@@ -117,6 +125,7 @@ function clear_path(){
 	for (var y = 0; y < height / zoom; y++){ //update all the nodes
 		for (var x = 0; x < width / zoom; x++){
 			if (nodes[y][x].type == "closed" || nodes[y][x].type == "open" || nodes[y][x].type == "path"){
+				nodes[y][x].parent = null;
 				nodes[y][x].update_square("empty");
 			}
 		}
@@ -126,17 +135,38 @@ function clear_path(){
 	open_nodes = [];
 	closed_nodes = [];
 	algo_started = false;
+	algo_finished = false;
 
 }
 
 setup();
 
 function start_loop(){
-	algo_loop = setInterval(step, 0);
+	if (start_coords[0] == -1 || end_coords[0] == -1){
+		alert("Please ensure you have a start and finnish");
+		clearInterval(algo_loop);
+		
+		return;}
+	if (play){
+		play_pause_button.innerHTML = "Pause";
+		if (algo_finished){
+			clear_path();
+		}
+		algo_loop = setInterval(step, 0);
+		play = false;
+	}else{
+		play_pause_button.innerHTML = "Run";
+		clearInterval(algo_loop);
+		play = true;
+	}
 }
 
-function pause(){
+function finnished(){
 	clearInterval(algo_loop);
+	algo_finished = true;
+	play_pause_button.innerHTML = "Run";
+	play = true;
+
 }
 
 
@@ -159,11 +189,7 @@ function is_traversable(x1, y1, x2, y2){
 
 
 function step(){
-	if (start_coords[0] == -1 || end_coords[0] == -1){
-		alert("Please ensure you have a start and finnish");
-		clearInterval(algo_loop);
-		return;
-	}
+
 	if (algorithm.value == "A_Star"){A_Star();}
 	if (algorithm.value == "dijkstra"){dijkstra();}
 }
@@ -176,7 +202,7 @@ function A_Star(){
 
 	if (open_nodes.length == 0){ //check if there is no path
 		alert("no path");
-		clearInterval(algo_loop);
+		finnished();
 		return;
 	}
 
@@ -200,7 +226,7 @@ function A_Star(){
 		Current.tracepath();
 		open_nodes = [];
 		closed_nodes = [];
-		clearInterval(algo_loop);
+		finnished();
 		alert("Path Found");
 	}else{
 		for (var neighbour = 0;neighbour < neighbours.length;neighbour++){
@@ -263,8 +289,8 @@ function dijkstra(){
 		Current.tracepath();
 		open_nodes = [];
 		closed_nodes = [];
-		clearInterval(algo_loop);
 		alert("Path Found");
+		finnished();
 	}
 
 	for (var neighbour = 0; neighbour < neighbours.length; neighbour++){
