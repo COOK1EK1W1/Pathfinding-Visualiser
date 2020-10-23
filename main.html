@@ -1,40 +1,43 @@
 <hmtl>
 	<head>
 		<title>Pathfinding Visualizer</title>
-		<script src="javascript.js"></script>
+		<script src="tool changer.js"></script>
+		<link rel="stylesheet" href="style.css">
 		
 	</head>
-	<body style="margin:0px;">
-		<div id="nav" style="background-color: lightblue; height:100px; width:100%;">
+	<body>
+		<div id="nav">
 			<form>
-				<table style="width:100%;">
+				<table>
 					<tr>
-						<td style="text-align:center">Tool Selector</td>
-						<td style="text-align:center">Enable parent arrows</td>
-						
-						<td style="text-align:center">Choose an Algorithm</td>
+						<td>Tool Selector			</td>
+						<td>Enable Parent Arrows	</td>
+						<td>Choose an Algorithm		</td>
 					</tr>
 					<tr>
-						<td style="text-align:center"><button id="tool" type="button" style="width:100px; height:50px;" onclick="change_tool()" value="wall">Wall</button></td>
+						<td><button id="tool" type="button" onclick="change_tool()" value="wall">Wall</button></td>
 
 						
-						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;" id="parent_arrow_checkbox" onclick="redraw()"></td>
+						<td><input type="checkbox" id="parent_arrow_checkbox" onclick="redraw()"></td>
 						
-						<td style="text-align:center"><select id="algorithm" name="algorithm" style="width:100px; height:50px;" onchange="clear_path()">
-						  <option value="A_Star">A*</option>
-						  <option value="dijkstra">Dijkstra</option>
-						  <option value="andrew">andrew</option>
+						<td><select id="algorithm" name="algorithm" onchange="clear_path()">
+						  <option value="A_Star"	>A*			</option>
+						  <option value="dijkstra"	>Dijkstra	</option>
+						  <option value="andrew"	>andrew		</option>
 						</select></td>
 						
-						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="start_loop()" id="play_pause">Run</button></td>
-						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="step()">Step</button></td>
-						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="clear_path()">Clear Path</button></td>
-						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="setup()">Clear</button></td>
+						<td><button type="button" onclick="start_loop()" id="play_pause">Run		</button></td>
+						<td><button type="button" onclick="step()"						>Step		</button></td>
+						<td><button type="button" onclick="clear_path()"				>Clear Path	</button></td>
+						<td><button type="button" onclick="setup()"						>Clear		</button></td>
 					</tr>
 				</table>
 			</form>
 		</div>
-		<canvas id="grid" onmousemove="mouse_move(event)" style="width:100%;position:apsolute;" onmousedown="setmousedown(event)" onclick="setmouseup()"></canvas>
-		<script src="javascript2.js"></script>
+		<canvas id="grid" onmousemove="mouse_move(event)" onmousedown="setmousedown(event)" onclick="setmouseup()"></canvas>
+		<script src="Node.js"></script>
+		<script src="draw.js"></script>
+		<script src="main.js"></script>
+		
 	</body>
 </html>
