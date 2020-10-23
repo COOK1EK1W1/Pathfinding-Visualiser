@@ -10,7 +10,6 @@
 				<table style="width:1580px;">
 					<tr>
 						<td style="text-align:center">Tool Selector</td>
-						<td style="text-align:center">Enable cost values</td>
 						<td style="text-align:center">Enable parent arrows</td>
 						
 						<td style="text-align:center">Choose an Algorithm</td>
@@ -18,17 +17,19 @@
 					<tr>
 						<td style="text-align:center"><button id="tool" type="button" style="width:100px; height:50px;" onclick="change_tool()" value="wall">Wall</button></td>
 
-						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;"></td>
+						
 						<td style="text-align:center"><input type="checkbox" style="width:50px; height:50px;" id="parent_arrow_checkbox" onclick="redraw()"></td>
 						
-						<td style="text-align:center"><select id="algorithm" name="algorithm" style="width:100px; height:50px;">
-						  <option value="astar">A*</option>
+						<td style="text-align:center"><select id="algorithm" name="algorithm" style="width:100px; height:50px;" onchange="clear_path()">
+						  <option value="A_Star">A*</option>
 						  <option value="dijkstra">Dijkstra</option>
 						  <option value="andrew">andrew</option>
 						</select></td>
 						
 						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="start_loop()">Run</button></td>
 						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="step()">Step</button></td>
+						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="pause()">Pause</button></td>
+						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="clear_path()">Clear Path</button></td>
 						<td style="text-align:center"><button type="button" style="width:100px; height:50px;" onclick="setup()">Clear</button></td>
 					</tr>
 				</table>
