@@ -4,8 +4,6 @@ const parent_arrow_checkbox = document.getElementById("parent_arrow_checkbox");
 const algorithm = document.getElementById("algorithm");
 const play_pause_button = document.getElementById("play_pause");
 const nav_div = document.getElementById("nav");
-var andrew = new Image();
-andrew.src = "andrew.jpg";
 const ctx = c.getContext("2d");
 
 //nav_dir.width = screen.width;
@@ -140,7 +138,6 @@ function is_traversable(x1, y1, x2, y2){
 function step(){
 	if (algorithm.value == "A_Star"){A_Star();}
 	if (algorithm.value == "dijkstra"){dijkstra();}
-	if (algorithm.value == "andrew"){andrewa();}
 }
 
 /*##################################A* Algotrithm######################################*/
@@ -263,17 +260,3 @@ function dijkstra(){
 	}
 }
 /*##############################Dijkstra's Algotrithm##################################*/
-var x = 1;
-var y = 1;
-var xv = 1;
-var yv = 1;
-function andrewa(){
-	x += xv
-	if (x > width - 200){xv = -1;}
-	if (x < 0){xv = 1;}
-	if (y > height - 150){yv = -1;}
-	if (y < 0){yv = 1;}
-
-	y += yv
-	ctx.drawImage(andrew, x, y, 200, 150);
-}
